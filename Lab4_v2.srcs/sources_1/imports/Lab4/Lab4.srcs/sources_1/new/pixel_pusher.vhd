@@ -13,9 +13,9 @@ end pixel_pusher;
 architecture pixel_pusher_arc of pixel_pusher is
 
     signal addr_count : std_logic_vector(17 downto 0) := (others => '0');
-    signal red5 : std_logic_vector(4 downto 0);
-    signal green6 : std_logic_vector(5 downto 0); 
-    signal blue5 : std_logic_vector(4 downto 0); 
+    signal red5 : std_logic_vector(2 downto 0);
+    signal green6 : std_logic_vector(2 downto 0); 
+    signal blue5 : std_logic_vector(1 downto 0); 
 begin
      addr <= addr_count; 
      
@@ -32,9 +32,9 @@ begin
               end if;        
                
               if( (vid = '1') and (unsigned(hcount) < 480) ) then      
-                red5 <= pixel(7 downto 5) & "00";
-                green6 <= pixel(4 downto 2) & "000";
-                blue5 <= pixel(1 downto 0) & "000"; 
+                red5 <= pixel(7 downto 5);
+                green6 <= pixel(4 downto 2); 
+                blue5 <= pixel(1 downto 0);
 
               else 
                red5 <= (others => '0');
@@ -42,9 +42,9 @@ begin
                blue5 <= (others => '0');       
               end if;
               
-              red <= std_logic_vector(To_unsigned(((To_integer(unsigned(red5))*255)/7),8));
-              green <= std_logic_vector(To_unsigned(((To_integer(unsigned(green6))*255)/7),8));
-              blue <= std_logic_vector(To_unsigned(((To_integer(unsigned(blue5))*255)/3),8));
+              red <= std_logic_vector(To_unsigned((((To_integer(unsigned(red5))*255))/7),8));
+              green <= std_logic_vector(To_unsigned((((To_integer(unsigned(green6))*255))/7),8));
+              blue <= std_logic_vector(To_unsigned((((To_integer(unsigned(blue5))*255))/3),8));
                 
                 
            end if; 
