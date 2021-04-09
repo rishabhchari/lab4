@@ -10,8 +10,8 @@ architecture Behavioral of pixel_pusher_tb is
   		Port (clk,en,VS,vid : in std_logic;
            pixel : in std_logic_vector(7 downto 0);
            hcount : in std_logic_vector(9 downto 0);
-           red,blue : out std_logic_vector(4 downto 0);
-           green : out std_logic_vector(5 downto 0); 
+           red,blue : out std_logic_vector(7 downto 0);
+           green : out std_logic_vector(7 downto 0); 
            addr : out std_logic_vector(17 downto 0));
 	end component; 
 
@@ -19,8 +19,8 @@ architecture Behavioral of pixel_pusher_tb is
 	signal vs, en, vid : std_logic := '1'; 
 	signal pixel : std_logic_vector(7 downto 0) := "11111111"; 
 	signal hcount : std_logic_vector(9 downto 0) := (others => '0'); 
-	signal tb_red,tb_blue : std_logic_vector(4 downto 0);
-	signal tb_green : std_logic_vector(5 downto 0);
+	signal tb_red,tb_blue : std_logic_vector(7 downto 0);
+	signal tb_green : std_logic_vector(7 downto 0);
 	signal addr : std_logic_vector(17 downto 0);
 	
 begin 
